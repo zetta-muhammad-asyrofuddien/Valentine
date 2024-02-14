@@ -32,6 +32,7 @@
         width: 50%;
         margin-top: 20px;
         border-radius: 10px; /* Rounded corners for the image */
+        transition: transform 0.8s ease
     }
     .btn-container {
         margin-top: 20px;
@@ -50,7 +51,7 @@
     }
     .additional-text {
       margin-top: 20px;
-      font-size: 36px; /* Larger font size for additional text */
+      font-size: 24px; /* Larger font size for additional text */
       color: #ff4081; /* Custom color for additional text */
     }
   </style>
@@ -60,9 +61,9 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-12 center">
-      <h3>Hai, Stefani De La Rosa 🦜</h3>
+      <h3>Hai, Stefani De La Rosa 🐼</h3>
       <img id="gifImage" src="first.gif" alt="">
-      <p id="text-first">Do you feel comfortable with me?</p>
+      <p id="text-first"><b>do you love me ?</b></p>
       <div class="additional-text"></div>
       <div class="btn-container">
         <button id="sayangBtn" class="btn btn-primary">OF COURSE 😊</button>
@@ -89,6 +90,8 @@
           // Apply CSS properties for the "No, Thanks" button
           $(this).css({
               'transform': `translate(${randomTranslateX}px, ${randomTranslateY}px)`,
+              'transition':' transform 0.8s ease'
+
           });
 
           // Change image and add additional text
@@ -109,7 +112,7 @@
         $('.btn-container').hide();
         $('#text-first').hide();
         $('.additional-text').hide();
-        $('h3').text('Ehehe, you should feel comfortable with me 😜');
+        $('h3').text('Ehehe, you should love me because i love you 😜');
       });
   });
 </script>
