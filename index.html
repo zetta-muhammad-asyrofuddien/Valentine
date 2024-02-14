@@ -11,37 +11,46 @@
   <!-- Styles for Valentine's Day -->
   <style>
     body {
-      background-color: #fce4ec; /* Warna latar belakang yang lembut */
+      background-color: #fce4ec; /* Soft background color */
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column; /* Menjadikan elemen satu kolom */
-      height: 60vh; /* Mengisi tinggi sesuai tinggi viewport */
-      margin: 0; /* Menghilangkan margin default body */
+      flex-direction: column; /* Single column layout */
+      height: 90vh; /* Fill height according to the viewport */
+      margin: 0; /* Remove default body margin */
     }
     .container {
       padding: 20px;
       border-radius: 10px;
-      text-align: center;
+      text-align: center; 
     }
     h3, p {
-      color: #d81b60; /* Warna merah muda untuk teks */
+      color: #d81b60; /* Pinkish color for text */
     }
     img {
         width: 50%;
         margin-top: 20px;
+        border-radius: 10px; /* Rounded corners for the image */
     }
     .btn-container {
         margin-top: 20px;
-        display: flex; /* Membuat container tombol menjadi flex container */
-        justify-content: center; /* Menengahkan tombol */
+        display: flex; /* Make button container a flex container */
+        justify-content: center; /* Center align buttons */
     }
     .btn-container button {
-        margin-right: 10px; /* Memberikan jarak kanan antara tombol */
+        margin-right: 10px; /* Right margin between buttons */
+        border-radius: 20px; /* Rounded corners for buttons */
+        font-size: 16px; /* Increase font size for buttons */
     }
-    h4 {
+    #text-first {
       margin-top: 2rem;
-      color: #d81b60;
+      font-size: medium;
+      font-style: italic;
+    }
+    .additional-text {
+      margin-top: 20px;
+      font-size: 36px; /* Larger font size for additional text */
+      color: #ff4081; /* Custom color for additional text */
     }
   </style>
 </head>
@@ -51,11 +60,12 @@
   <div class="row">
     <div class="col-12 center">
       <h3>Hai, Stefani De La Rosa 🦜</h3>
-      <img id="gifImage" src="mail.gif" alt="">
-      <h4>As</h4>
+      <img id="gifImage" src="first.gif" alt="">
+      <p id="text-first">Do you feel comfortable with me?</p>
+      <div class="additional-text"></div>
       <div class="btn-container">
-        <button id="sayangBtn" class="btn btn-primary">Sayang</button>
-        <button id="enggakSayangBtn" class="btn btn-danger">Enggak Sayang</button>
+        <button id="sayangBtn" class="btn btn-primary">OF COURSE 😊</button>
+        <button id="enggakSayangBtn" class="btn btn-danger">No, Thanks 😒</button>
       </div>
     </div>
   </div>
@@ -67,19 +77,40 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        // Menambahkan event listener untuk tombol "Enggak Sayang"
-        $('#enggakSayangBtn').click(function() {
-            // Menghasilkan nilai acak antara -50 dan 50
-            const randomTranslateY = Math.floor(Math.random() * 801) - 400 ;
-            const randomTranslateX = Math.floor(Math.random() * 101) - 50 ;
-            
-            // Mengubah properti CSS tombol "Enggak Sayang" untuk memberikan efek pindah
-            $(this).css({
-                'transform': `translate(${randomTranslateX}px, ${randomTranslateY}px)`, // Menggunakan nilai acak
-            });
-        });
-    });
+  let countClick = 1
+  $(document).ready(function() {
+      // Event listener for the "No, Thanks" button
+      $('#enggakSayangBtn').click(function() {
+          // Generate random values for translation
+          const randomTranslateY = Math.floor(Math.random() * 401) - 100;
+          const randomTranslateX = Math.floor(Math.random() * 101) - 50;
+          
+          // Apply CSS properties for the "No, Thanks" button
+          $(this).css({
+              'transform': `translate(${randomTranslateX}px, ${randomTranslateY}px)`,
+          });
+
+          // Change image and add additional text
+          if (countClick > 3) {
+            $('#gifImage').attr('src', 'sure.gif');
+            $('.additional-text').text('Why 😔');
+          } else {
+            $('#gifImage').attr('src', 'second.gif');
+          }
+
+          countClick++;
+      });
+
+      // Event listener for the "OF COURSE" button
+      $('#sayangBtn').click(function() {
+        // Change image, hide buttons, hide initial text, and change the header text
+        $('#gifImage').attr('src', 'last.gif');
+        $('.btn-container').hide();
+        $('#text-first').hide();
+        $('.additional-text').hide();
+        $('h3').text('Ehehe, you should feel comfortable with me 😜');
+      });
+  });
 </script>
 
 </body>
