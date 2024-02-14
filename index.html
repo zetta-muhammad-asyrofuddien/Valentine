@@ -6,6 +6,8 @@
   <title>Hallo, Stefani De La Rosa ❤</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <!-- Styles for Valentine's Day -->
   <style>
     body {
@@ -13,25 +15,29 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 50vh; /* Mengisi tinggi sesuai tinggi viewport */
+      flex-direction: column; /* Menjadikan elemen satu kolom */
+      height: 60vh; /* Mengisi tinggi sesuai tinggi viewport */
       margin: 0; /* Menghilangkan margin default body */
     }
     .container {
-      /* background-color: #fff; */
       padding: 20px;
       border-radius: 10px;
-      /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-      text-align: center; /* Mengatur teks menjadi rata tengah */
+      text-align: center;
     }
     h1, p {
       color: #d81b60; /* Warna merah muda untuk teks */
     }
-    .center {
-      display: flex;
-      justify-content: center;
-    }
     img {
-        width: 30%;
+        width: 20%;
+        margin-top: 20px;
+    }
+    .btn-container {
+        margin-top: 20px;
+        display: flex; /* Membuat container tombol menjadi flex container */
+        justify-content: center; /* Menengahkan tombol */
+    }
+    .btn-container button {
+        margin-right: 10px; /* Memberikan jarak kanan antara tombol */
     }
   </style>
 </head>
@@ -40,7 +46,12 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-12 center">
-        <img src="virttual-hug.gif" alt="">
+      <h1>Hai, Stefani De La Rosa 🦜</h1>
+      <img id="gifImage" src="mail.gif" alt="">
+      <div class="btn-container">
+        <button id="sayangBtn" class="btn btn-primary">Sayang</button>
+        <button id="enggakSayangBtn" class="btn btn-danger">Enggak Sayang</button>
+      </div>
     </div>
   </div>
 </div>
@@ -48,5 +59,23 @@
 <!-- Bootstrap JS, Popper.js, and jQuery -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Menambahkan event listener untuk tombol "Enggak Sayang"
+        $('#enggakSayangBtn').click(function() {
+            // Menghasilkan nilai acak antara -50 dan 50
+            const randomTranslateY = Math.floor(Math.random() * 200);
+            const randomTranslateX = Math.floor(Math.random() * 200);
+            
+            // Mengubah properti CSS tombol "Enggak Sayang" untuk memberikan efek pindah
+            $(this).css({
+                'transform': `translate(${randomTranslateX}px, ${randomTranslateY}px)`, // Menggunakan nilai acak
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
